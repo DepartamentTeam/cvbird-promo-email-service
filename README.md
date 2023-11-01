@@ -1,6 +1,6 @@
 # Promo Email Service.
 
-#### Collect user email from promo site.
+#### Collects user email from promo site.
 
 ## Install
 
