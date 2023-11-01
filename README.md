@@ -6,7 +6,7 @@
 
 1. Create db cvbirds in PostgreSQL
 2. Create table from script promo_email.sql
-3. Add PostgreSQL adress and credentials to application.properties
+3. Add PostgreSQL address and credentials to application.properties
 4. Compile and run the service.
 
 ## Usage
