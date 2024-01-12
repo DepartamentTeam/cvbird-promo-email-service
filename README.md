@@ -1,6 +1,6 @@
 # Promo Email Service.
 
-#### Collects user email from promo site.
+#### Collects user userEmail from promo site.
 
 ## Install
 
@@ -11,23 +11,32 @@
 
 ## Usage
 
-Service save email to PostgreSQL. Send POST request to /promo/email with body:<br>
+Service saves userEmail to PostgreSQL. Send POST request to /promo/userEmail with body:<br>
 ```
 {
-   "email": "your@email.domain"
+   "userEmail": "your@userEmail.domain"
 }
 ```
 
-Service validates emails. If email is invalid service return JSON<br>
+Service validates emails. If userEmail is invalid service return JSON<br>
 ```
 {
-"email": "Please provide a valid email address"
+"userEmail": "Please provide a valid userEmail address"
 }
 ```
 
-Service supports uniqueness. If email is non unique service return JSON
+Service supports uniqueness. If userEmail is non unique service return JSON
 ```
 {
-"email": "Email address is already registered"
+"userEmail": "Email address is already registered"
 }
 ```
+
+Service saves feedback in Postgres and sends message to email. Send POST request to /feedback
+```
+{
+    "topic": "Subject",
+    "name": "UserName",
+    "email": "user@email.com",
+    "message": "Hello"
+}

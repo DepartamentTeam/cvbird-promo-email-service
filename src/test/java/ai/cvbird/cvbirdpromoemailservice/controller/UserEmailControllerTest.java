@@ -1,7 +1,7 @@
 package ai.cvbird.cvbirdpromoemailservice.controller;
 
 
-import ai.cvbird.cvbirdpromoemailservice.service.EmailService;
+import ai.cvbird.cvbirdpromoemailservice.service.UserEmailStoreService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@WebMvcTest(controllers = {EmailController.class})
-public class EmailControllerTest {
+@WebMvcTest(controllers = {UserEmailController.class})
+public class UserEmailControllerTest {
 
     @MockBean
-    EmailService emailService;
+    UserEmailStoreService userEmailStoreService;
 
     @Autowired
     private MockMvc mockMvc;
