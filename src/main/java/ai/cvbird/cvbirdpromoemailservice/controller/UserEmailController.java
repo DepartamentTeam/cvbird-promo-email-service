@@ -1,9 +1,8 @@
 package ai.cvbird.cvbirdpromoemailservice.controller;
 
-import ai.cvbird.cvbirdpromoemailservice.dto.EmailDTO;
-import ai.cvbird.cvbirdpromoemailservice.model.Email;
-import ai.cvbird.cvbirdpromoemailservice.service.EmailService;
-import ai.cvbird.cvbirdpromoemailservice.service.EmailServiceImpl;
+import ai.cvbird.cvbirdpromoemailservice.dto.UserEmailDTO;
+import ai.cvbird.cvbirdpromoemailservice.model.UserEmail;
+import ai.cvbird.cvbirdpromoemailservice.service.UserEmailStoreService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,17 +17,17 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/promo/email")
-public class EmailController {
+public class UserEmailController {
 
     @Autowired
-    EmailService emailService;
+    UserEmailStoreService userEmailStoreService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> saveEmail(@RequestBody @Valid EmailDTO emailDTO){
-        Email email = emailService.save(emailDTO);
-        if (email != null) {
-            return new ResponseEntity<>(email.getEmail(), HttpStatus.CREATED);
+    public ResponseEntity<String> saveEmail(@RequestBody @Valid UserEmailDTO userEmailDTO){
+        UserEmail userEmail = userEmailStoreService.save(userEmailDTO);
+        if (userEmail != null) {
+            return new ResponseEntity<>(userEmail.getEmail(), HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(null, HttpStatus.ALREADY_REPORTED);
         }

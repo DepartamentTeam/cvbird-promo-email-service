@@ -1,8 +1,9 @@
 package ai.cvbird.cvbirdpromoemailservice.service;
 
-import ai.cvbird.cvbirdpromoemailservice.dto.EmailDTO;
-import ai.cvbird.cvbirdpromoemailservice.model.Email;
+import ai.cvbird.cvbirdpromoemailservice.entity.EmailDetails;
 
 public interface EmailService {
-    public Email save(EmailDTO emailDTO);
+    // Method
+    // To send a simple email
+    String sendSimpleMail(EmailDetails details);
 }

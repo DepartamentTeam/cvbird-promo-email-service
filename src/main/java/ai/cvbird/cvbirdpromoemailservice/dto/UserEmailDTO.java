@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmailDTO {
+public class UserEmailDTO {
 
     Long id;
 

@@ -5,13 +5,10 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 /**
- * Simple JavaBean object that represent an email
+ * Simple JavaBean object that represent a feedback
  */
 @Entity
-@Table(name = "promo_email", indexes = {
-        @Index(name = "idx__promo__email", columnList = "email"),
-        @Index(name = "idx__promo__email__id", columnList = "id")
-})
+@Table(name = "promo_feedback")
 @Getter
 @Setter
 @Builder
@@ -20,14 +17,22 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Email {
+public class Feedback {
 
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "email", nullable = false, updatable = false, unique = true)
+    @Column(name = "topic")
+    String topic;
+
+    @Column(name = "name")
+    String name;
+
+    @Column(name = "email")
     String email;
 
+    @Column(name = "message")
+    String message;
 }
