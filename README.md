@@ -14,21 +14,30 @@
 Service saves userEmail to PostgreSQL. Send POST request to /promo/userEmail with body:<br>
 ```
 {
-   "userEmail": "your@userEmail.domain"
+   "email": "your@userEmail.domain"
+}
+```
+
+Service saves Facebook user information to PostgreSQL. Send POST request to /promo/userEmail/facebook with body:<br>
+```
+{
+    "name" : "K.V.",
+    "email": "kv.fbook@v.c",
+    "id" : "123455679890"
 }
 ```
 
 Service validates emails. If userEmail is invalid service return JSON<br>
 ```
 {
-"userEmail": "Please provide a valid userEmail address"
+"email": "Please provide a valid userEmail address"
 }
 ```
 
 Service supports uniqueness. If userEmail is non unique service return JSON
 ```
 {
-"userEmail": "Email address is already registered"
+"email": "Email address is already registered"
 }
 ```
 
