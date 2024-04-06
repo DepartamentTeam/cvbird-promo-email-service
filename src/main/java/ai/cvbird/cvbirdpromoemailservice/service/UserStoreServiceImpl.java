@@ -1,12 +1,11 @@
 package ai.cvbird.cvbirdpromoemailservice.service;
 
 import ai.cvbird.cvbirdpromoemailservice.dao.FacebookUserRepository;
+import ai.cvbird.cvbirdpromoemailservice.dao.GoogleUserRepository;
 import ai.cvbird.cvbirdpromoemailservice.dao.UserEmailRepository;
-import ai.cvbird.cvbirdpromoemailservice.dto.FacebookUserConverter;
-import ai.cvbird.cvbirdpromoemailservice.dto.FacebookUserDTO;
-import ai.cvbird.cvbirdpromoemailservice.dto.UserEmailConvertor;
-import ai.cvbird.cvbirdpromoemailservice.dto.UserEmailDTO;
+import ai.cvbird.cvbirdpromoemailservice.dto.*;
 import ai.cvbird.cvbirdpromoemailservice.model.FacebookUser;
+import ai.cvbird.cvbirdpromoemailservice.model.GoogleUser;
 import ai.cvbird.cvbirdpromoemailservice.model.UserEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +17,19 @@ public class UserStoreServiceImpl implements UserEmailStoreService {
     private final UserEmailConvertor userEmailConvertor;
     private final FacebookUserRepository facebookUserRepository;
     private final FacebookUserConverter facebookUserConverter;
+    private final GoogleUserRepository googleUserRepository;
+    private final  GoogleUserConverter googleUserConverter;
 
     @Autowired
     public UserStoreServiceImpl(UserEmailRepository userEmailRepository, UserEmailConvertor userEmailConvertor,
-                                FacebookUserRepository facebookUserRepository, FacebookUserConverter facebookUserConverter) {
+                                FacebookUserRepository facebookUserRepository, FacebookUserConverter facebookUserConverter,
+                                GoogleUserRepository googleUserRepository, GoogleUserConverter googleUserConverter) {
         this.userEmailRepository = userEmailRepository;
         this.userEmailConvertor = userEmailConvertor;
         this.facebookUserRepository = facebookUserRepository;
         this.facebookUserConverter = facebookUserConverter;
+        this.googleUserRepository = googleUserRepository;
+        this.googleUserConverter = googleUserConverter;
 
     }
 
@@ -39,5 +43,8 @@ public class UserStoreServiceImpl implements UserEmailStoreService {
         return facebookUserRepository.save(facebookUserConverter.fromDTO(facebookUserDTO));
     }
 
-
+    @Override
+    public GoogleUser saveGoogleUser(GoogleUserDTO googleUserDTO) {
+        return googleUserRepository.save(googleUserConverter.fromDTO(googleUserDTO));
+    }
 }

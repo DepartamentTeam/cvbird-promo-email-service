@@ -1,6 +1,7 @@
 package ai.cvbird.cvbirdpromoemailservice.dto;
 
 import ai.cvbird.cvbirdpromoemailservice.validator.UniqueFacebookUser;
+import ai.cvbird.cvbirdpromoemailservice.validator.UniqueGoogleUser;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FacebookUserDTO {
+public class GoogleUserDTO {
 
     Long id;
 
@@ -20,10 +21,10 @@ public class FacebookUserDTO {
     //  @Email(message="Please provide a valid email address",
     //  regexp = "^(?!\.)("([^"\r\\]|\\["\r\\])*"|([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$")
     // @Email(message="Please provide a valid email address", regexp = ".+[@].+[\\.].+")
-    @UniqueFacebookUser
+    @UniqueGoogleUser
     @NotNull(message = "email must be not NULL")
-    String email;
+    String googleEmail;
 
-    String facebookId;
-    String facebookName;
+    String googleName;
+    String googleUserAttributes;
 }
