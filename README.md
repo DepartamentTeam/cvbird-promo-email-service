@@ -17,7 +17,11 @@ Service saves userEmail to PostgreSQL. Send POST request to /promo/userEmail wit
    "email": "your@userEmail.domain"
 }
 ```
-
+Service save Google user attributes to PostgreSQL when user authenticates by OpenID (Google).
+For this move user to 
+```
+/oauth2/authorization/google
+```
 Service saves Facebook user information to PostgreSQL. Send POST request to /promo/userEmail/facebook with body:<br>
 ```
 {
