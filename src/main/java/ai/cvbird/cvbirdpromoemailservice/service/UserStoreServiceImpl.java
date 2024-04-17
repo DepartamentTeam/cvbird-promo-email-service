@@ -7,6 +7,7 @@ import ai.cvbird.cvbirdpromoemailservice.dto.*;
 import ai.cvbird.cvbirdpromoemailservice.model.FacebookUser;
 import ai.cvbird.cvbirdpromoemailservice.model.GoogleUser;
 import ai.cvbird.cvbirdpromoemailservice.model.UserEmail;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,10 @@ public class UserStoreServiceImpl implements UserEmailStoreService {
 
     @Override
     public GoogleUser saveGoogleUser(GoogleUserDTO googleUserDTO) {
-        return googleUserRepository.save(googleUserConverter.fromDTO(googleUserDTO));
+        if (googleUserRepository.findByGoogleEmail(googleUserDTO.getGoogleEmail()) == null) {
+            return googleUserRepository.save(googleUserConverter.fromDTO(googleUserDTO));
+        } else {
+            return null;
+        }
     }
 }

@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +51,16 @@ public class UserEmailController {
         } else {
             return new ResponseEntity<>(null, HttpStatus.ALREADY_REPORTED);
         }
+    }
+
+    @GetMapping(value = "/get_google_user")
+    public ResponseEntity<SimpleResponseEntity> getGoogleUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        SimpleResponseEntity simpleResponseEntity = new SimpleResponseEntity(null);
+        if (authentication.getPrincipal() instanceof DefaultOAuth2User) {
+            simpleResponseEntity = new SimpleResponseEntity(((DefaultOAuth2User) authentication.getPrincipal()).getAttribute("name"));
+        }
+        return new ResponseEntity<>(simpleResponseEntity, HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

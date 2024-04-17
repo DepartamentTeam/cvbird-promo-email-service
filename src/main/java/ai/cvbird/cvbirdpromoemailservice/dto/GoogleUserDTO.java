@@ -1,6 +1,5 @@
 package ai.cvbird.cvbirdpromoemailservice.dto;
 
-import ai.cvbird.cvbirdpromoemailservice.validator.UniqueFacebookUser;
 import ai.cvbird.cvbirdpromoemailservice.validator.UniqueGoogleUser;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
