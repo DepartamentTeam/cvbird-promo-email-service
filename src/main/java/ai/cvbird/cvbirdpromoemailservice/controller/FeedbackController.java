@@ -19,6 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/feedback")
+@CrossOrigin
 public class FeedbackController {
     @Autowired
     FeedbackStoreService feedbackStoreService;

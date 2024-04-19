@@ -14,21 +14,44 @@
 Service saves userEmail to PostgreSQL. Send POST request to /promo/userEmail with body:<br>
 ```
 {
-   "userEmail": "your@userEmail.domain"
+   "email": "your@userEmail.domain"
+}
+```
+Service save Google user attributes to PostgreSQL when user authenticates by OpenID (Google).
+For this move user to 
+```
+/oauth2/authorization/google
+```
+
+Service provides google user information. For this send GET request to /promo/email/get_google_user
+```
+{"response":"User name"}
+```
+If user does not authorize:
+```
+{"response":"null"}
+```
+
+Service saves Facebook user information to PostgreSQL. Send POST request to /promo/userEmail/facebook with body:<br>
+```
+{
+    "name" : "K.V.",
+    "email": "kv.fbook@v.c",
+    "id" : "123455679890"
 }
 ```
 
 Service validates emails. If userEmail is invalid service return JSON<br>
 ```
 {
-"userEmail": "Please provide a valid userEmail address"
+"email": "Please provide a valid userEmail address"
 }
 ```
 
 Service supports uniqueness. If userEmail is non unique service return JSON
 ```
 {
-"userEmail": "Email address is already registered"
+"email": "Email address is already registered"
 }
 ```
 
