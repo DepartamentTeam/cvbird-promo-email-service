@@ -2,6 +2,7 @@ package ai.cvbird.cvbirdpromoemailservice.controller;
 
 import ai.cvbird.cvbirdpromoemailservice.dto.FacebookUserDTO;
 import ai.cvbird.cvbirdpromoemailservice.dto.UserEmailDTO;
+import ai.cvbird.cvbirdpromoemailservice.entity.GoogleUserResponseEntity;
 import ai.cvbird.cvbirdpromoemailservice.entity.SimpleResponseEntity;
 import ai.cvbird.cvbirdpromoemailservice.model.FacebookUser;
 import ai.cvbird.cvbirdpromoemailservice.model.UserEmail;
@@ -54,13 +55,14 @@ public class UserEmailController {
     }
 
     @GetMapping(value = "/get_google_user")
-    public ResponseEntity<SimpleResponseEntity> getGoogleUser(){
+    public ResponseEntity<GoogleUserResponseEntity> getGoogleUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        SimpleResponseEntity simpleResponseEntity = new SimpleResponseEntity(null);
+        GoogleUserResponseEntity googleUserResponseEntity = new GoogleUserResponseEntity(null, null);
         if (authentication.getPrincipal() instanceof DefaultOAuth2User) {
-            simpleResponseEntity = new SimpleResponseEntity(((DefaultOAuth2User) authentication.getPrincipal()).getAttribute("name"));
+            googleUserResponseEntity.setName(((DefaultOAuth2User) authentication.getPrincipal()).getAttribute("name"));
+            googleUserResponseEntity.setImage(((DefaultOAuth2User) authentication.getPrincipal()).getAttribute("picture"));
         }
-        return new ResponseEntity<>(simpleResponseEntity, HttpStatus.OK);
+        return new ResponseEntity<>(googleUserResponseEntity, HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

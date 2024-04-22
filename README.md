@@ -25,11 +25,11 @@ For this move user to
 
 Service provides google user information. For this send GET request to /promo/email/get_google_user
 ```
-{"response":"User name"}
+{"name":"User name","image":"ref"}
 ```
 If user does not authorize:
 ```
-{"response":"null"}
+{"name":"null","image":"null"}
 ```
 
 Service saves Facebook user information to PostgreSQL. Send POST request to /promo/userEmail/facebook with body:<br>
