@@ -37,7 +37,8 @@ public class SecurityConfig {
                                 //.failureUrl("/signin?error=true")
                                 .failureUrl("/signin_error")
                                 .permitAll()
-                ).oauth2Login().successHandler(googleSuccessHandler);
+                ).oauth2Login().successHandler(googleSuccessHandler)
+                .and().logout().logoutSuccessUrl("https://cvbird.ai");
         return http.build();
     }
 }
