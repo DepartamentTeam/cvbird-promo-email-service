@@ -31,7 +31,7 @@ If user does not authorize:
 ```
 {"name":"null","image":"null"}
 ```
-Logout from Google OpenID:
+Logout from Google OpenID GET-request to:
 ```
 /logout
 ```
