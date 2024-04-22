@@ -31,6 +31,10 @@ If user does not authorize:
 ```
 {"name":"null","image":"null"}
 ```
+Logout from Google OpenID:
+```
+/logout
+```
 
 Service saves Facebook user information to PostgreSQL. Send POST request to /promo/userEmail/facebook with body:<br>
 ```
